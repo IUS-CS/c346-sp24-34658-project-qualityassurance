@@ -205,3 +205,4 @@ xcuserdata/
 ##makes sure that .idea folder is completely ignored
 
 /.idea/
+/.fleet/
