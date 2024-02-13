@@ -1,0 +1,3 @@
+/Users/nhile/CLionProjects/c346-sp24-34658-project-qualityassurance/cmake-build-debug/CMakeFiles/c346_sp24_34658_project_qualityassurance.dir
+/Users/nhile/CLionProjects/c346-sp24-34658-project-qualityassurance/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nhile/CLionProjects/c346-sp24-34658-project-qualityassurance/cmake-build-debug/CMakeFiles/rebuild_cache.dir

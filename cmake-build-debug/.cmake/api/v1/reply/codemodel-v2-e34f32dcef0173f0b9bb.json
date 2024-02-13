@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "c346_sp24_34658_project_qualityassurance",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "c346_sp24_34658_project_qualityassurance::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-c346_sp24_34658_project_qualityassurance-Debug-68658a75351429fbbfeb.json",
+					"name" : "c346_sp24_34658_project_qualityassurance",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/nhile/CLionProjects/c346-sp24-34658-project-qualityassurance/cmake-build-debug",
+		"source" : "/Users/nhile/CLionProjects/c346-sp24-34658-project-qualityassurance"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
