@@ -1,10 +1,10 @@
 # Organization for Habit Goal Tracking App
 
 ## Team Members
-1. **Project Manager:** 
-2. **Lead Developer:** 
-3. **UI/UX Designer:**
-4. **Marketing Specialist:** 
+1. **Project Manager:** Huynh Le
+2. **Lead Developer:** Aaron Silva
+3. **UI/UX Designer:** Garrison Creek.
+4. **Marketing Specialist:** Huynh Le, Aaron Silva, Garrison Creek.
 
 ## Roles and Responsibilities
 - **Project Manager:** Oversees the overall development and implementation of the Habit Goal Tracking App. Responsible for team coordination, timeline management, and ensuring project objectives are met.
@@ -22,11 +22,11 @@
 Major decisions regarding the development and implementation of the Habit Goal Tracking App will be made collaboratively by the project manager, lead developer, and UI/UX designer. Input from team members will be considered, and consensus will be reached after thorough discussion and evaluation of options.
 
 ## Project Timeline
-- **Start Date:** 
-- **Research & Planning Phase:** 
-- **Development Phase:** 
-- **Testing & Refinement Phase:** 
-- **Launch Date:** 
+- **Start Date:** 25th Jan, 2024
+- **Research & Planning Phase:** 30th Jan,2024
+- **Development Phase:** 14th Feb, 2024
+- **Testing & Refinement Phase:** 15th March, 2024 
+- **Launch Date:** 26th April, 2024
 
 ## Feedback and Suggestions
 We encourage open communication and feedback within the team to ensure the successful development and launch of the Habit Goal Tracking App. Team members are welcome to share ideas, suggestions, and concerns to improve project outcomes and enhance collaboration.
