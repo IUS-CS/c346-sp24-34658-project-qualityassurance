@@ -1,21 +1,19 @@
 # Sprint Ceremony Minutes
   
-Date: 2020-09-21
+Date: 2024-02-13
 
 Members present:
 
-* Chris Sexton
-* Bones Sexton
-* Parsnip Sexton
-* Schnitzel Sexton
+* Garrison Creek
+* Huynh Le
+* Aaron Silva
   
 ## Demo
 
 This sprint, we completed:
 
-* X
-* Y
-* Z
+* We completed filling out the documents section and all related text files.
+* We started implementing a prototype for our planned project
 
 Here are screenshots of what we did:
 
@@ -27,21 +25,21 @@ Here are screenshots of what we did:
 
 ### Good
 
-* Sexton is amazing
-* I love working on X
+* We did good with learning the new technologies and languages required for making the project.
 
 ### Bad
 
-* This thing went poorly because X
-* So and so is mean
+* We could do better at planning out the project.
+* We could do better at seperating out responsibilites and setting timelines for when they should be done throughout the group
+* Communication could be better within the group.
 
 ### Actionable Commitments
 
-* As a team, we will...
+* As a team, we will better plan out what each of us will work on. We will be better at meeting with each other to work on the project.
 
 ## Next Sprint Planning
 
-(This section can and should be completed in your GitHub projects, but please summarize here)
+We will need to start working on a UI design for the app. We need to finish setting up proper testing for our code. 
 
 Points | Story
 -------|--------
