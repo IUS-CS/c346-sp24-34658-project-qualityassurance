@@ -1,13 +1,13 @@
 //
-//  HabitTests.swift
-//  HabitTests
+//  GoalsAppTests.swift
+//  GoalsAppTests
 //
-//  Created by Garrison Creek on 3/24/24.
+//  Created by Garrison Creek on 4/1/24.
 //
 
 import XCTest
 
-final class HabitTests: XCTestCase {
+final class GoalsAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
