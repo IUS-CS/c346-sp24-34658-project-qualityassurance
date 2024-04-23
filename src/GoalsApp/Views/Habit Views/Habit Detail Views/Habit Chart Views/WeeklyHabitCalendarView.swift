@@ -80,10 +80,14 @@ struct WeeklyHabitCalendarView: View {
 
 func calculateHeight(selectedHabit: Habit, day: Date) -> CGFloat {
     var height = 0.0
-    if selectedHabit.datesCompleted.contains(day.startOfDay) {
+    if day.startOfDay == Date.now.startOfDay {
+        // height is the percentage complete out of 200
+        var percentageComplete = selectedHabit.currentAmount / selectedHabit.goalAmount
+        height = 200.0 * CGFloat(percentageComplete)
+    } else if selectedHabit.datesCompleted.contains(day.startOfDay) {
         height = 200.0
-    } else if selectedHabit.missedDaysAmount[day.startOfDay] != nil {
-        var missedPercentage = selectedHabit.missedDaysAmount[day.startOfWeek]!
+    } else if selectedHabit.missedDays_andAmount[day.startOfDay] != nil {
+        var missedPercentage = selectedHabit.missedDays_andAmount[day.startOfWeek]!
         height = 200.0 * CGFloat(missedPercentage)
     }
     

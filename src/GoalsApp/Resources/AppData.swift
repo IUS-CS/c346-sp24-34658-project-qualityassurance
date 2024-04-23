@@ -12,7 +12,7 @@ import SwiftUI
 class AppData: ObservableObject {
     @Published var account: Account = Account()
 
-    private static func fileURL() throws -> URL {
+    internal static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
                                     appropriateFor: nil,

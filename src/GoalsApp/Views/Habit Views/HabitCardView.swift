@@ -14,11 +14,14 @@ struct HabitCardView: View {
     @State private var offset: CGFloat = 0
     @State private var isSelected = false
     
+    @State private var fakeCounter: Int = 0
+    
     var body: some View {
         
         let longPress = LongPressGesture(minimumDuration: 0.05)
             .onEnded { _ in
                 isSelected = true
+                appData.account.soundsEnabled ? SoundManager.instance.playSound(sound: appData.account.selectionSound): nil
             }
         
         let drag = DragGesture()
@@ -44,9 +47,11 @@ struct HabitCardView: View {
                 if habit.currentAmount == habit.goalAmount && !habit.isComplete{
                     habit.markComplete()
                     habit.celebration += 1
+                    appData.account.soundsEnabled ? SoundManager.instance.playSound(sound: appData.account.completionSound): nil
                 }
                 else if habit.isComplete && habit.currentAmount < habit.goalAmount {
                     habit.markIncomplete()
+                    appData.account.soundsEnabled ? SoundManager.instance.playSound(sound: appData.account.failureSound): nil
                 }
                 isSelected = false
             }
@@ -75,12 +80,15 @@ struct HabitCardView: View {
         .gesture(combined)
         .sensoryFeedback(.success, trigger: isSelected)
         .sensoryFeedback(.impact, trigger: habit.currentAmount)
-        .confettiCannon(counter: $habit.celebration)
+//        .confettiCannon(counter: $habit.celebration)
+        .confettiCannon(counter: appData.account.celebrationsEnabled ? $habit.celebration: $fakeCounter)
+        
         
         .overlay(
             Image(systemName: habit.icon)
-                .resizable()
-                .frame(width: 30, height: 30)
+                .font(.largeTitle)
+//                .resizable()
+//                .frame(width: 30, height: 30)
                 .padding(.leading, 280)
                 .padding(.top, 40)
                 .foregroundColor(habit.accent.standardColor)

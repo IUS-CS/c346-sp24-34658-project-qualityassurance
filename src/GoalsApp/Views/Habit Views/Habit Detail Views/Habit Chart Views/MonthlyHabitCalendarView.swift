@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+struct EdgeBorder: Shape {
+    var width: CGFloat
+    var edges: [Edge]
+    
+    func path(in rect: CGRect) -> Path {
+        edges.map { edge -> Path in
+            switch edge {
+            case .top: return Path(.init(x: rect.minX-4, y: rect.minY, width: rect.width*1.2, height: 3))
+            case .bottom: return Path(.init(x: rect.minX-4, y: rect.maxY - width, width: rect.width*1.2, height: width))
+            case .leading: return Path(.init(x: rect.minX+(0.5*rect.maxX), y: rect.minY, width: rect.width/2 + 4, height: width))
+            case .trailing: return Path(.init(x: rect.minX+(0.5*rect.maxX), y: rect.maxY - width, width: rect.width/2 + 4, height: width))
+            }
+        }.reduce(into: Path()) { $0.addPath($1) }
+    }
+}
+
 struct MonthlyHabitCalendarView: View {
     @EnvironmentObject private var appData: AppData
     @State var selectedHabit: Habit
@@ -41,7 +57,101 @@ struct MonthlyHabitCalendarView: View {
                         if day.monthInt != date.monthInt {
                             Text("")
                         }
-                        else if (selectedHabit.datesCompleted.contains(day.startOfDay)) {
+                        else if (selectedHabit.period.start == day.startOfDay && selectedHabit.frequency != .daily) {
+                            //Start of currentPeriod
+                            ZStack {
+                                if (selectedHabit.isComplete) {
+                                    Circle()
+                                        .fill(selectedHabit.accent.mainColor)
+                                        .frame(width: 38, height: 38)
+                                    Rectangle()
+                                        .fill(selectedHabit.accent.mainColor)
+                                        .frame(height: 38)
+                                        .offset(x: 16)
+                                        .ignoresSafeArea()
+                                }
+                                
+                                Text(day.formatted(.dateTime.day()))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                    .frame(maxWidth: .infinity, minHeight: 38)
+                                    .background(
+                                        Arc(startAngle: .degrees(270), endAngle: .degrees(90), clockwise: true)
+                                            .stroke(selectedHabit.accent.mainColor, lineWidth: 3)
+                                            .border(width: 3, edges: [.leading, .trailing], color: selectedHabit.accent.standardColor)
+                                    )
+                            }
+                        }
+                        
+                        else if (selectedHabit.period.start < day.startOfDay && selectedHabit.period.end > day.startOfDay && selectedHabit.frequency != .daily) {
+                            // Inbetween current period
+                            ZStack {
+                                if (selectedHabit.isComplete) {
+                                    Rectangle()
+                                        .fill(selectedHabit.accent.mainColor)
+                                        .overlay(
+                                            Rectangle()
+                                                .fill(selectedHabit.accent.mainColor)
+                                                .frame(width: 50)
+                                        )
+                                }
+                                Text(day.formatted(.dateTime.day()))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                    .frame(maxWidth: .infinity, minHeight: 38)
+                                    .border(width: 3, edges: [.top, .bottom], color: selectedHabit.accent.standardColor)
+                            }
+                        }
+                        else if (selectedHabit.period.end == day.startOfDay && selectedHabit.frequency != .daily) {
+                            // End of current period
+                            ZStack {
+                                if (selectedHabit.isComplete) {
+                                    Circle()
+                                        .fill(selectedHabit.accent.mainColor)
+                                        .frame(width: 38, height: 38)
+                                    Rectangle()
+                                        .fill(selectedHabit.accent.mainColor)
+                                        .frame(width: 20, height: 38)
+                                        .offset(x: -14)
+                                        .ignoresSafeArea()
+                                }
+                                Text(day.formatted(.dateTime.day()))
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                    .frame(maxWidth: .infinity, minHeight: 38)
+                                    .background(
+                                        Arc(startAngle: .degrees(270), endAngle: .degrees(90), clockwise: true)
+                                            .stroke(selectedHabit.accent.mainColor, lineWidth: 3)
+                                            .border(width: 3, edges: [.leading, .trailing], color: selectedHabit.accent.standardColor)
+                                            .rotationEffect(.degrees(180))
+                                    )
+                            }
+                        }
+                        else if (selectedHabit.skippedDays.contains(day.startOfDay)  && selectedHabit.frequency == .daily) {
+                            Text(day.formatted(.dateTime.day()))
+                                .fontWeight(.bold)
+                                .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                .frame(maxWidth: .infinity, minHeight: 38)
+                                .background(
+                                    // moon.zzz sf icon
+                                    Image(systemName: "moon.zzz.fill")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.purple)
+                                )
+                        } else if Date.now.startOfDay == day.startOfDay {
+                            // For Daily Habits Current Day Outline
+                            Text(day.formatted(.dateTime.day()))
+                                .fontWeight(.bold)
+                                .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                .frame(maxWidth: .infinity, minHeight: 38)
+                                .background(
+                                    Circle()
+                                        .stroke(selectedHabit.accent.mainColor, lineWidth: 3)
+                                )
+                        } 
+                        else if (selectedHabit.datesCompleted.contains(day.startOfDay) && selectedHabit.frequency == .daily) {
+                            // for daily habits showing completed past days
                             Text(day.formatted(.dateTime.day()))
                                 .fontWeight(.bold)
                                 .foregroundStyle(selectedHabit.theme.complementaryColor)
@@ -49,21 +159,29 @@ struct MonthlyHabitCalendarView: View {
                                 .background(
                                     Circle()
                                         .fill(selectedHabit.accent.mainColor)
-                                        .stroke(Date.now.startOfDay == day.startOfDay ? selectedHabit.accent.mainColor: selectedHabit.theme.mainColor
+                                        .stroke(Date.now.startOfDay == day.startOfDay ? selectedHabit.accent.mainColor: selectedHabit.accent.mainColor
                                                 , lineWidth: 3)
                                 )
                         }
-                        else {
+                        else if selectedHabit.missedDays_andAmount.keys.contains(day.startOfDay) {
+                            // For Missed Habits placing X over day
                             Text(day.formatted(.dateTime.day()))
                                 .fontWeight(.bold)
                                 .foregroundStyle(selectedHabit.theme.complementaryColor)
                                 .frame(maxWidth: .infinity, minHeight: 38)
                                 .background(
-                                    Circle()
-                                        .fill(selectedHabit.theme.mainColor.secondary)
-                                        .stroke(Date.now.startOfDay == day.startOfDay ? selectedHabit.accent.mainColor: selectedHabit.theme.mainColor
-                                                , lineWidth: 3)
+                                    Image(systemName: "xmark")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.red)
                                 )
+                        }
+                        else {
+                            // For Habits, just the day number
+                            Text(day.formatted(.dateTime.day()))
+                                .fontWeight(.bold)
+                                .foregroundStyle(selectedHabit.theme.complementaryColor)
+                                .frame(maxWidth: .infinity, minHeight: 38)
                         }
                     }
                 }
@@ -80,9 +198,27 @@ struct MonthlyHabitCalendarView: View {
         
         
     }
+    struct Arc: Shape {
+        var startAngle: Angle
+        var endAngle: Angle
+        var clockwise: Bool
+        
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: (min(rect.width, rect.height) / 2) - 1.5 , startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+            
+            return path
+        }
+    }
+}
+extension View {
+    func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
+        overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
+    }
 }
 
+
 #Preview {
-    MonthlyHabitCalendarView(selectedHabit: Habit.testHabits[0])
+    MonthlyHabitCalendarView(selectedHabit: Habit.testHabits[1])
         .environmentObject(AppData())
 }

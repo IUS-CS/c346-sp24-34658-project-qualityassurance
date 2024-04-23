@@ -22,7 +22,7 @@ struct HabitDetailView: View {
     
     
     var body: some View {
-        VStack () {
+        VStack {
             ScrollView () { // top layer item list stack
                 HStack {
                     ExpandedHabitCardView(habit: $selectedHabit.toUnwrapped(defaultValue: Habit.emptyHabit))
@@ -42,38 +42,63 @@ struct HabitDetailView: View {
                     
                     Spacer()
                     
-                    Picker("Chart Type", selection: $selectedChartType) {
-                        ForEach(ChartType.allCases, id: \.self) { type in
-                            Text(type.rawValue)
+                    // CUSTOM PICKER FOR ChART TYPES WEEKLY MONTHLY YEARLY
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(.tertiarySystemBackground))
+                        //                            .fill(.blue)
+                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
+                        
+                        
+                        HStack {
+                            ForEach (ChartType.allCases, id: \.self) { chartType in
+                                Button(action: {
+                                        selectedChartType = chartType
+                                }) {
+                                    Text(chartType.rawValue)
+                                        .frame(height: 25)
+                                        .padding(.horizontal, 4)
+                                        .scaledToFit()
+                                        .fontWeight(.medium)
+                                        .foregroundColor(appData.account.backgroundTheme.complementaryColor)
+                                        .background(selectedChartType == chartType ? Color.secondary : Color.clear)
+                                        .clipShape(
+                                            RoundedRectangle(cornerRadius: 5)
+                                        )
+                                }
+                            }
                         }
+                        .frame(width:220, height: 30)
+                        
                     }
-                    .frame(width: 190)
-                    .pickerStyle(.segmented)
+                    .frame(width: 220, height: 35)
+                    
                 } // Calendar and Chart Picker
                 .frame(width: UIScreen.main.bounds.width - 50)
                 .padding(.top)
                 
                 switch selectedChartType {
-                    case .weekly:
-                        withAnimation ( .smooth(duration: 2.0)){
-                            WeeklyHabitCalendarView(selectedHabit: selectedHabit!)
-                                .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
-                                .padding(.top)
-                        }
-                        
-                    case .monthly:
-                        withAnimation ( .smooth(duration: 2.0)){
-                            MonthlyHabitCalendarView(selectedHabit: selectedHabit!)
-                                .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
-                                .padding(.top)
-                        }
-                        
-                    case .yearly:
-                        withAnimation ( .smooth(duration: 2.0)){
-                            YearlyHabitCalendarView(selectedHabit: selectedHabit!)
-                                .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
-                                .padding(.top)
-                        }
+                case .weekly:
+                    withAnimation ( .smooth(duration: 2.0)){
+                        WeeklyHabitCalendarView(selectedHabit: selectedHabit!)
+                            .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
+                            .padding(.top)
+                    }
+                    
+                case .monthly:
+                    withAnimation ( .smooth(duration: 2.0)){
+                        MonthlyHabitCalendarView(selectedHabit: selectedHabit!)
+                            .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
+                            .padding(.top)
+                    }
+                    
+                case .yearly:
+                    withAnimation ( .smooth(duration: 2.0)){
+                        YearlyHabitCalendarView(selectedHabit: selectedHabit!)
+                            .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
+                            .padding(.top)
+                    }
                 } // Displaying the weekly, monthly, or yearly charts
                 HStack {
                     Text("Stats")
@@ -320,7 +345,7 @@ struct HabitDetailView: View {
                             Spacer()
                             HStack {
                                 Spacer()
-                                Text("\(selectedHabit!.globalTotalPercentageCompleted, specifier: "%.2f")%")
+                                Text("\(selectedHabit!.habitTotalPercentageCompleted, specifier: "%.2f")%")
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(selectedHabit!.theme.complementaryColor)
@@ -340,7 +365,7 @@ struct HabitDetailView: View {
                         .cornerRadius(15)
                         .frame(width: UIScreen.main.bounds.width - 50)
                         .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-
+                    
                     VStack {
                         Text("Due Date: \(selectedHabit!.dueDate.formatted(.dateTime.year().month().day().hour().minute()))")
                             .font(.title2)
@@ -361,7 +386,6 @@ struct HabitDetailView: View {
         }
         .frame(width: UIScreen.main.bounds.width - 25, height: UIScreen.main.bounds.height - 210)
         .background(.thinMaterial)
-        
         .cornerRadius(15)
         .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
     }

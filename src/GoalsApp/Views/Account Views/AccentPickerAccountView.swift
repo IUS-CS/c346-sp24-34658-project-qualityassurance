@@ -13,10 +13,17 @@ struct AccentPickerAccountView: View {
         HStack {
             Spacer()
             ForEach(Accent.allCases) { accent in
-                Button() {
-                    account.accentTheme = accent
-                } label: {
-                    AccentView(accent: accent, selection: $account.accentTheme)
+                
+                if account.backgroundTheme == .Light && accent == .Light {
+                    
+                } else if account.backgroundTheme == .Dark && accent == .Dark {
+                    
+                } else {
+                    Button() {
+                        account.accentTheme = accent
+                    } label: {
+                        AccentView(accent: accent, selection: $account.accentTheme)
+                    }
                 }
             }
             Spacer()

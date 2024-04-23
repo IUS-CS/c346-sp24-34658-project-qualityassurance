@@ -78,8 +78,8 @@ struct ExpandedHabitCardView: View {
         
         .overlay(
             Image(systemName: habit.icon)
-                .resizable()
-                .frame(width: 50, height: 60)
+                .font(.largeTitle)
+                .scaleEffect(1.5)
                 .padding(.leading, 270)
                 .padding(.top, 100)
                 .foregroundColor(habit.accent.standardColor)
@@ -145,6 +145,12 @@ struct ExpandedHabitCardView: View {
                         .lineLimit(1)
                         .padding(.trailing, 10)
                         .padding(.top, 10)
+                        .foregroundColor(habit.theme.complementaryColor)
+                    Text(habit.unitName)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .lineLimit(1)
+                        .padding(.trailing, 10)
                         .foregroundColor(habit.theme.complementaryColor)
                     Spacer()
                 }

@@ -11,7 +11,6 @@ import UserNotifications
 
 struct NotificationManager
 {
-    
     static let instance = NotificationManager()
     
     func requestPermission() {
@@ -42,6 +41,28 @@ struct NotificationManager
             trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
+    }
+    
+    // send notification for provided string
+    func sendNotification(title: String, body: String, time: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: Calendar.current.dateComponents([.hour, .minute],
+            from: time),
+            repeats: false)
+        
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
+        print("Added notification for \(title) at \(time)")
     }
     
     func cancelHabitNotification(for habit: Habit) {

@@ -37,6 +37,7 @@ struct BottomTabBarView: View {
             )
             .imageScale(.large)
             .scaleEffect(selectedTab == .newHabit ? 1.25: 1.0)
+            .padding(.vertical, 5)
             .font(.largeTitle)
             .foregroundColor(selectedTab == .newHabit ? appData.account.accentTheme.standardColor : appData.account.backgroundTheme.complementaryColor)
             .onTapGesture {
@@ -60,8 +61,8 @@ struct BottomTabBarView: View {
             Spacer()
         }
         .background(.regularMaterial)
-        .frame(width: UIScreen.main.bounds.width - 100, height: 60)
         .cornerRadius(20)
+        .frame(width: UIScreen.main.bounds.width - 75, height: 75)
         .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
         .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
         

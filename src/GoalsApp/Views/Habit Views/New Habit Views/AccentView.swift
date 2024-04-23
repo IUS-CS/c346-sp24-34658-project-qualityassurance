@@ -10,6 +10,7 @@ import SwiftUI
 struct AccentView: View {
     var accent: Accent
     @Binding var selection: Accent
+    @EnvironmentObject private var appData: AppData
     
     var body: some View {
         
@@ -20,16 +21,16 @@ struct AccentView: View {
             }) {
                 if accent == selection {
                     Circle()
-                        .stroke(.black, lineWidth: 0.2)
+                        .stroke(appData.account.backgroundTheme.complementaryColor, lineWidth: 0.1)
                         .background(Circle().fill(.white).frame(width:6,height:6))
                         .background(Circle().fill(accent.mainColor))
-                        .frame(width: 20, height: 20)
+                        .frame(width: 25, height: 25)
                     
                 } else {
                     Circle()
-                        .stroke(.black, lineWidth: 0.2)
+                        .stroke(appData.account.backgroundTheme.complementaryColor, lineWidth: 0.1)
                         .background(Circle().fill(accent.mainColor))
-                        .frame(width: 20, height: 20)
+                        .frame(width: 25, height: 25)
                 }
             }
         }
@@ -40,5 +41,6 @@ struct AccentView: View {
 struct AccentView_Previews: PreviewProvider {
     static var previews: some View {
         AccentView(accent: .accentBlue, selection: .constant(.accentBlue))
+            .environmentObject(AppData())
     }
 }
