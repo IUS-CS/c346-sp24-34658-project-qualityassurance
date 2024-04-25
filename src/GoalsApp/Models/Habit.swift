@@ -73,7 +73,6 @@ struct Habit: Identifiable, Codable, Equatable {
         case .weekly:
             let startOfWeek = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
             let endOfWeek = Calendar.current.date(byAdding: DateComponents(day: -1, weekOfMonth: 1), to: startOfWeek)!
-
             return (startOfWeek, endOfWeek)
         case .monthly:
             let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))!

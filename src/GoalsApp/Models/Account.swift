@@ -78,6 +78,32 @@ struct Account: Identifiable, Codable {
     
     // MARK: - Functions
     
+    func totalCompletionsForDay(day: Date) -> Int {
+        var totalCompletions = 0
+     // foreach habit in habits
+        for habit in habits {
+            // if habit is completed on day
+            if habit.datesCompleted.contains(day) {
+                // increment total completions
+                totalCompletions += 1
+            }
+        }
+        return totalCompletions
+    }
+    
+    func totalPossibleCompletionsForDay(day: Date) -> Int {
+        var totalPossibleCompletions = 0
+        // foreach habit in habits
+        for habit in habits {
+            // if habit is not skipped
+            if !habit.isSkipped {
+                // increment total possible completions
+                totalPossibleCompletions += 1
+            }
+        }
+        return totalPossibleCompletions
+    }
+    
     /// Deletes a given habit from the list of habits.
     /// - Parameter habit: The habit to be deleted.
     mutating func deleteHabit(_ habit: Habit) {

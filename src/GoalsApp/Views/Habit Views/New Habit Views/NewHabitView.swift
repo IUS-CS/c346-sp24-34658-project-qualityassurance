@@ -120,6 +120,9 @@ struct NewHabitView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .onChange(of: newHabit.frequency, perform: {_ in
+                        newHabit.dueDate = newHabit.period.end
+                    })
                     
                     HStack {
                         Text("Goal Amount:")
@@ -155,6 +158,9 @@ struct NewHabitView: View {
                 ) {
                     DatePicker("Due Date:", selection: $newHabit.dueDate, displayedComponents: .date)
                         .datePickerStyle(.compact)
+                        .onAppear(perform: {
+                            newHabit.dueDate = newHabit.period.end
+                        })
                     
                     // Exemption Days for Daily Habits
                     if newHabit.frequency == .daily {

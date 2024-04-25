@@ -88,28 +88,11 @@ struct StatsView: View {
                     } // Account Stats Card
                     .background(appData.account.backgroundTheme.mainColor)
                     
-                    ZStack { // Productivity Graph
-                        Rectangle()
-                            .fill(appData.account.backgroundTheme.mainColor.secondary)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                            .frame(width: (UIScreen.main.bounds.width - 25), height: 300)
-                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-                        
-                        VStack {
-                            HStack {
-                                Text("Productivity")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(appData.account.backgroundTheme.complementaryColor)
-                                    .padding(.leading, 10)
-                                    .padding(.top, 10)
-                                
-                            }
-                        }
-                    } // Productivity Graph
-                    .background(appData.account.backgroundTheme.mainColor)
-                    .padding(.top, 10)
+                    
+                        ProgressBarChartView()
+                        .background(appData.account.backgroundTheme.mainColor)
+                        .padding(.top, 40)
+                        .padding(.bottom, 25)
                     
                     HStack {
                         ProgressPieChartView()
@@ -119,13 +102,6 @@ struct StatsView: View {
                         ProgressPieChartView()
                     }
                     .frame(width: UIScreen.main.bounds.width - 25)
-                    
-                    
-                    
-                    
-                     
-                    
-                    
                 } // END OF SCROLL VIEW HOLDING STATS
                 .scrollIndicators(.hidden)
                 .preferredColorScheme(appData.account.backgroundTheme.colorScheme)
