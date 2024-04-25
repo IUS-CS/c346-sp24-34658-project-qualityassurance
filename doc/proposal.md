@@ -1,7 +1,7 @@
 # Proposal for Habit Goal Tracking App
 
 ## Project Overview
-The Habit Goal Tracking App is a mobile application designed to help users develop and maintain positive habits by tracking their progress towards specific goals. The app will provide a platform for users to set personalized goals, track their daily, weekly, or monthly progress, receive reminders for consistency, and analyze their statistics to stay motivated. The app aims to be user-friendly, customizable, and versatile to accommodate a wide range of habit-tracking needs.
+The Habit Goal Tracking App is a mobile application designed to help users develop and maintain positive habits by tracking their progress towards specific goals. The app will provide a platform for users to set personalized habits, track their daily, weekly, or monthly progress, receive reminders for consistency, and analyze their statistics to stay motivated. The app aims to be user-friendly, customizable, and versatile to accommodate a wide range of habit-tracking needs.
 
 ## Objectives
 - Create a user-friendly interface for setting and tracking goals.
@@ -20,9 +20,6 @@ The target audience for the Habit Goal Tracking App includes individuals looking
 - **Week 9-10:** Integration of sharing capabilities and customization options.
 - **Week 11:** Testing phase to ensure app functionality and user experience.
 - **Week 12:** Final adjustments, bug fixes, and app launch.
-
-## Budget
-The estimated budget for the development of the Habit Goal Tracking App is $10,000. This includes expenses for design, development, testing, and launch activities. Additional costs may be incurred for marketing and promotion efforts post-launch.
 
 ## Conclusion
 The Habit Goal Tracking App aims to provide users with a comprehensive solution for tracking and achieving their goals. By incorporating features such as reminders, statistics, sharing capabilities, and customization options, the app seeks to make habit-building an engaging and rewarding experience for users. We believe that the Habit Goal Tracking App has the potential to positively impact users' lives and help them cultivate lasting habits for personal growth and well-being.
