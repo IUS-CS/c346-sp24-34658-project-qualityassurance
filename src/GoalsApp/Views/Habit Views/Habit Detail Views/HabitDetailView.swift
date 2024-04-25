@@ -112,6 +112,71 @@ struct HabitDetailView: View {
                 .frame(width: UIScreen.main.bounds.width - 50)
                 .padding(.top)
                 
+                ZStack { // Habit Stats Card
+                    Rectangle()
+                        .fill(selectedHabit!.theme.mainColor.secondary)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                        .frame(width: (UIScreen.main.bounds.width - 50), height: 100)
+                        .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
+                    // laurel.leading icon
+                    Image(systemName: "laurel.leading")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 75)
+                        .foregroundColor(.yellow)
+                        .padding(.trailing, 290)
+                    
+                    Image(systemName: "laurel.trailing")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 75)
+                        .foregroundColor(.yellow)
+                        .padding(.leading, 295)
+                    
+                    
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Text("\(appData.account.acctBestStreak)")
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundStyle(appData.account.backgroundTheme.complementaryColor)
+                            
+                            Text("Completed")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(appData.account.backgroundTheme.complementaryColor)
+                        }
+                        Spacer()
+                        VStack {
+                            Text("\(selectedHabit!.totalSkipped)")
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundStyle(appData.account.backgroundTheme.complementaryColor)
+                            
+                            Text("Skipped")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(appData.account.backgroundTheme.complementaryColor)
+                        }
+                        Spacer()
+                        VStack {
+                            Text("\(selectedHabit!.totalMissed)")
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundStyle(appData.account.backgroundTheme.complementaryColor)
+                            
+                            Text("Missed")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(appData.account.backgroundTheme.complementaryColor)
+                        }
+                        Spacer()
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 75)
+                } // Habit Stats Card
+                
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
                     ZStack {
@@ -206,127 +271,6 @@ struct HabitDetailView: View {
                         .padding(.top, 5)
                         .padding(.bottom, 5)
                     } // Date Created
-                    
-                    ZStack {
-                        // background glass container
-                        Rectangle()
-                            .fill(selectedHabit!.theme.mainColor.secondary)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                            .frame(width: (UIScreen.main.bounds.width - 75)/2)
-                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-                        
-                        VStack {
-                            Text("Completed")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(selectedHabit!.theme.complementaryColor)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                Text("\(selectedHabit!.totalCompleted)")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(selectedHabit!.theme.complementaryColor)
-                                Spacer()
-                            }
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom, 5)
-                    } // Total Completed
-                    
-                    ZStack {
-                        // background glass container
-                        Rectangle()
-                            .fill(selectedHabit!.theme.mainColor.secondary)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                            .frame(width: (UIScreen.main.bounds.width - 75)/2)
-                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-                        
-                        VStack {
-                            Text("Total Skipped")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(selectedHabit!.theme.complementaryColor)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                Image(systemName: "moon.zzz.fill")
-                                    .foregroundStyle(.purple)
-                                    .font(.title)
-                                Text("\(selectedHabit!.totalSkipped)")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(selectedHabit!.theme.complementaryColor)
-                                Spacer()
-                            }
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom, 5)
-                    } // Total Skipped
-                    
-                    ZStack {
-                        // background glass container
-                        Rectangle()
-                            .fill(selectedHabit!.theme.mainColor.secondary)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                            .frame(width: (UIScreen.main.bounds.width - 75)/2)
-                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-                        
-                        VStack {
-                            Text("Total Missed")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(selectedHabit!.theme.complementaryColor)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                Image(systemName: "x.circle")
-                                    .foregroundStyle(.red)
-                                    .font(.title)
-                                Text("\(selectedHabit!.totalMissed)")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(selectedHabit!.theme.complementaryColor)
-                                Spacer()
-                            }
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom, 5)
-                    } // Total Missed
-                    
-                    ZStack {
-                        // background glass container
-                        Rectangle()
-                            .fill(selectedHabit!.theme.mainColor.secondary)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                            .frame(width: (UIScreen.main.bounds.width - 75)/2)
-                            .shadow(color: Color.black.opacity(0.3), radius: 7, x: 7, y: 7)
-                        
-                        VStack {
-                            Text("Total Skipped")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(selectedHabit!.theme.complementaryColor)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                Image(systemName: "moon.zzz.fill")
-                                    .foregroundStyle(.purple)
-                                    .font(.title)
-                                Text("\(selectedHabit!.totalSkipped)")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(selectedHabit!.theme.complementaryColor)
-                                Spacer()
-                            }
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom, 5)
-                    } // Total Skipped
                     
                     ZStack {
                         // background glass container

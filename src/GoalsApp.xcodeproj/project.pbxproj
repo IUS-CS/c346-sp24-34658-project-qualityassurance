@@ -66,6 +66,7 @@
 		85C84F9E2BA0ED0500FC0EB7 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C84F9D2BA0ED0500FC0EB7 /* AccountSettingsView.swift */; };
 		85C84FA42BA0F55900FC0EB7 /* AccentPickerAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C84FA32BA0F55900FC0EB7 /* AccentPickerAccountView.swift */; };
 		85C84FA62BA11A4700FC0EB7 /* HabitTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C84FA52BA11A4700FC0EB7 /* HabitTheme.swift */; };
+		85CCE70A2BD9D9A600FA416C /* ProgressBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE7092BD9D9A600FA416C /* ProgressBarChartView.swift */; };
 		85D134742BAE8E65000CFAF0 /* ExpandedHabitCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D134732BAE8E64000CFAF0 /* ExpandedHabitCardView.swift */; };
 		85D619742BA12E5F00ADF863 /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D619732BA12E5F00ADF863 /* ThemePickerView.swift */; };
 		85D619762BA1356500ADF863 /* BackgroundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D619752BA1356500ADF863 /* BackgroundPickerView.swift */; };
@@ -139,6 +140,7 @@
 		85C84F9D2BA0ED0500FC0EB7 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		85C84FA32BA0F55900FC0EB7 /* AccentPickerAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentPickerAccountView.swift; sourceTree = "<group>"; };
 		85C84FA52BA11A4700FC0EB7 /* HabitTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTheme.swift; sourceTree = "<group>"; };
+		85CCE7092BD9D9A600FA416C /* ProgressBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarChartView.swift; sourceTree = "<group>"; };
 		85D134732BAE8E64000CFAF0 /* ExpandedHabitCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedHabitCardView.swift; sourceTree = "<group>"; };
 		85D619732BA12E5F00ADF863 /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
 		85D619752BA1356500ADF863 /* BackgroundPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPickerView.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				855B758E2B842C8D00E869E1 /* StatsView.swift */,
+				85CCE7092BD9D9A600FA416C /* ProgressBarChartView.swift */,
 				85B3B5C02BAFC9D400C3E762 /* ProgressPieChartView.swift */,
 			);
 			path = "Stat Views";
@@ -522,6 +525,7 @@
 				855B75802B84285200E869E1 /* HabitListView.swift in Sources */,
 				85C005F42BAA0D61006AB512 /* BottomTabBarView.swift in Sources */,
 				857169AE2B96C2D0007BD8A6 /* AccentPickerView.swift in Sources */,
+				85CCE70A2BD9D9A600FA416C /* ProgressBarChartView.swift in Sources */,
 				85D8BF952BAE3A830019B851 /* YearlyHabitCalendarView.swift in Sources */,
 				855B758A2B842BA500E869E1 /* ErrorView.swift in Sources */,
 				85C84F9E2BA0ED0500FC0EB7 /* AccountSettingsView.swift in Sources */,

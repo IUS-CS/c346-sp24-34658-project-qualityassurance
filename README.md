@@ -9,17 +9,9 @@ The Habit Goal Tracking App is a simple and effective tool to help you establish
 - **Track Progress:** Easily track your daily, weekly, or monthly progress towards your goals.
 - **Reminders:** Receive reminders and notifications to help you stay on track and consistent.
 - **Statistics:** View detailed statistics and insights on your habits to track your progress.
-- **Share Progress:** Share your achievements and progress with friends and family to stay motivated.
 - **Customization:** Customize the app with different themes and colors to suit your preferences.
 
 ## How to Use
-1. **Download:** Download the app from the app store and create an account.
-2. **Set Goals:** Define and set up your goals by specifying the habit you want to track and the desired frequency.
-3. **Track Progress:** Start tracking your progress daily by marking off each day that you complete your task.
-4. **Receive Reminders:** Stay on track with reminders and notifications to help you stay consistent.
-5. **Review Statistics:** Analyze your statistics and adjust your goals as needed based on your progress.
-6. **Share Progress:** Share your progress with others to receive support and encouragement.
-
-## Contact
-If you have any questions, feedback, or suggestions for improving the app, please feel free to contact us at supportqualityassurancegroup@habitgoaltrackingapp.com
-Thank you for using the Habit Goal Tracking App! We hope it helps you stay on track, develop positive habits, and achieve your goals.
+1. First clone the depository and open it in Xcode.
+2. Run it on and up to date simulator. This app was mainly built for the Iphone 15, and IOS 17.2. But it should work for earlier iPhone. Going back in IOS's though will likely cause issues with the app. IOS 17+ is recommended.
+3. The app can be downloaded to an iphone that has been put in developer-mode via the Settings app. To do this just connect †he phone to your computer and run with the iphone selected and it will install and open.
