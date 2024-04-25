@@ -89,6 +89,7 @@ struct StatsView: View {
                     .background(appData.account.backgroundTheme.mainColor)
                     
                     
+                    // Progress Bar Chart View
                         ProgressBarChartView()
                         .background(appData.account.backgroundTheme.mainColor)
                         .padding(.top, 40)
